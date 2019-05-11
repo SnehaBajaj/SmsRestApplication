@@ -16,4 +16,10 @@ public class PhoneNumber {
             sequenceName = "account_id_sequence"
     )
     private Integer id;
+
+    @Column(name = "number")
+    private String number;
+
+    @ManyToOne
+    private Account account;
 }
