@@ -13,12 +13,18 @@ public class SmsController {
 
     @PostMapping("/inbound/sms")
     public Response inboundSms(@Valid @RequestBody Sms sms){
-        return new Response();
+        return Response.builder()
+                .message("Request went through")
+                .error("None")
+                .build();
     }
 
     @PostMapping("/outbound/sms")
     public Response outboundSms(@Valid @RequestBody Sms sms) {
-        return new Response();
+        return Response.builder()
+                .message("Request went through")
+                .error("None")
+                .build();
     }
 
 }

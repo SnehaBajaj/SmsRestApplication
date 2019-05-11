@@ -1,10 +1,13 @@
 package demo.auzmor.sms.model;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="account")
+@Getter
 public class Account {
 
     @Id
