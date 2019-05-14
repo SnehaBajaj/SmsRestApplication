@@ -2,6 +2,7 @@ package demo.auzmor.sms.controller;
 
 import demo.auzmor.sms.model.Response;
 import demo.auzmor.sms.model.Sms;
+import demo.auzmor.sms.service.AuthService;
 import demo.auzmor.sms.service.InboundSmsService;
 import demo.auzmor.sms.service.OutboundSmsService;
 import demo.auzmor.sms.validator.RequestValidator;
@@ -21,6 +22,9 @@ public class SmsController {
 
     @Autowired
     RequestValidator validator;
+
+    @Autowired
+    AuthService authService;
 
     @Autowired
     InboundSmsService inboundSmsService;
