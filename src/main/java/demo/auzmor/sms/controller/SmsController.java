@@ -2,6 +2,8 @@ package demo.auzmor.sms.controller;
 
 import demo.auzmor.sms.model.Response;
 import demo.auzmor.sms.model.Sms;
+import demo.auzmor.sms.service.InboundSmsService;
+import demo.auzmor.sms.service.OutboundSmsService;
 import demo.auzmor.sms.validator.RequestValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,12 @@ public class SmsController {
 
     @Autowired
     RequestValidator validator;
+
+    @Autowired
+    InboundSmsService inboundSmsService;
+
+    @Autowired
+    OutboundSmsService outboundSmsService;
 
     @PostMapping("/inbound/sms")
     public ResponseEntity<Response> inboundSms(@Valid @RequestBody Sms sms, Errors errors){
