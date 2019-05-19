@@ -1,6 +1,6 @@
 package demo.auzmor.sms.controller;
 
-import demo.auzmor.sms.model.Response;
+import demo.auzmor.sms.model.SmsResponse;
 import demo.auzmor.sms.model.Sms;
 import demo.auzmor.sms.service.AuthService;
 import demo.auzmor.sms.service.InboundSmsService;
@@ -33,23 +33,17 @@ public class SmsController {
     OutboundSmsService outboundSmsService;
 
     @PostMapping("/inbound/sms")
-    public ResponseEntity<Response> inboundSms(@Valid @RequestBody Sms sms, Errors errors){
+    public ResponseEntity<SmsResponse> inboundSms(@Valid @RequestBody Sms sms, Errors errors){
         validateInput(sms, errors);
-        return new ResponseEntity<>(Response.builder()
-                .message("inbound sms ok")
-                .error("")
-                .build(),
-                HttpStatus.OK);
+        SmsResponse smsResponse = inboundSmsService.processInboundSms(sms);
+        return new ResponseEntity<>(smsResponse, HttpStatus.OK);
     }
 
     @PostMapping("/outbound/sms")
-    public ResponseEntity<Response> outboundSms(@Valid @RequestBody Sms sms, Errors errors) {
+    public ResponseEntity<SmsResponse> outboundSms(@Valid @RequestBody Sms sms, Errors errors) {
         validateInput(sms, errors);
-        return new ResponseEntity<>(Response.builder()
-                .message("outbound sms ok")
-                .error("")
-                .build(),
-                HttpStatus.OK);
+        SmsResponse smsResponse = outboundSmsService.processOutboundSms(sms);
+        return new ResponseEntity<>(smsResponse, HttpStatus.OK);
     }
 
     private void validateInput(@RequestBody @Valid Sms sms, Errors errors) {

@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class Response {
+public class SmsResponse {
 
     private String message;
     private String error;
