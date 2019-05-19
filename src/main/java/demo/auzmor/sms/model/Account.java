@@ -1,6 +1,9 @@
 package demo.auzmor.sms.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -9,6 +12,8 @@ import javax.validation.constraints.Size;
 @Table(name="account")
 @Getter
 public class Account {
+
+    public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
 
     @Id
     @GeneratedValue(generator="account_id_generator")
@@ -20,9 +25,14 @@ public class Account {
 
     @Column(name = "auth_id")
     @Size(max = 40)
+    @JsonIgnore
     private String authId;
 
     @Column(name = "username")
     @Size(max = 30)
     private String username;
+
+    public void setAuthId(String authId) {
+        this.authId = PASSWORD_ENCODER.encode(authId);
+    }
 }
