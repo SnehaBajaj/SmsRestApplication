@@ -25,7 +25,6 @@ public class Account {
 
     @Column(name = "auth_id")
     @Size(max = 40)
-    @JsonIgnore
     private String authId;
 
     @Column(name = "username")
