@@ -27,6 +27,8 @@ public class Account {
     @Size(max = 40)
     private String authId;
 
+//    private String password;
+
     @Column(name = "username")
     @Size(max = 30)
     private String username;

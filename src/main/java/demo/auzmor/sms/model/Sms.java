@@ -2,7 +2,6 @@ package demo.auzmor.sms.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
 import lombok.Getter;
 
 import javax.validation.constraints.Size;
