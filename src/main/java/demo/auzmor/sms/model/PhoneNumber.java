@@ -20,6 +20,6 @@ public class PhoneNumber {
     @Column(name = "number")
     private String number;
 
-    @ManyToOne
+    @OneToOne
     private Account account;
 }

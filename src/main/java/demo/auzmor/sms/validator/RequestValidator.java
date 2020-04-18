@@ -17,7 +17,7 @@ public class RequestValidator {
             errors.reject("to");
         }
 
-        if (sms.getText().length() > 120) {
+        if (sms.getText().length() > 120 || sms.getText().length() < 1) {
             errors.reject("text");
         }
 

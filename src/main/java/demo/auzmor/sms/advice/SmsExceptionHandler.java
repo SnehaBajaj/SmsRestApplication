@@ -13,16 +13,6 @@ import javax.validation.ValidationException;
 @ControllerAdvice
 public class SmsExceptionHandler {
 
-    /*@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public ResponseEntity<SmsResponse> handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException ex) {
-        return new ResponseEntity<>(HttpStatus.METHOD_NOT_ALLOWED);
-    }
-
-    @ExceptionHandler(AuthenticationException.class)
-    public ResponseEntity<SmsResponse> handleAuthenticationException(AuthenticationException ex) {
-        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-    }*/
-
     @ExceptionHandler(ValidationException.class)
     public ResponseEntity<SmsResponse> handleValidationException(ValidationException ex) {
         return new ResponseEntity<>(SmsResponse.builder()
